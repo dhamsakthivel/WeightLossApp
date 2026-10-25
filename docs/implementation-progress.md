@@ -86,6 +86,12 @@ specifications.
   dashboard-managed environment after `KEYCLOAK_ADMIN_PASSWORD` is supplied as
   a Cloud environment secret. Do not use the compose development password or
   any PHI in that environment.
+- Added the React Patient Registration screen and typed API client:
+  - accessible identity/enrollment form;
+  - active-status validation cues for clinician and care-team assignment;
+  - typed protected API request/response contract;
+  - submission remains disabled until real OIDC session integration supplies a
+    token and authorized care teams.
 - Verified:
   - `apps/api`: `./gradlew test`
   - `apps/web`: `npm run lint`
@@ -102,5 +108,6 @@ and reproducible.
 
 ## Next
 
-1. Add the React OIDC client and registration form against the protected API.
+1. Add the React OIDC client and wire the registration form to the protected
+   API.
 2. Add patient list and profile correction workflow with role checks.

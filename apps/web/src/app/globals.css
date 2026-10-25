@@ -42,6 +42,49 @@ a {
   text-decoration: none;
 }
 
+.registration-form {
+  margin-top: 2rem;
+  max-width: 48rem;
+}
+
+.registration-form fieldset {
+  border: 1px solid var(--foreground);
+  padding: 1.5rem;
+}
+
+.registration-form legend {
+  font-weight: 700;
+  padding: 0 0.5rem;
+}
+
+.form-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+}
+
+.form-grid label {
+  display: grid;
+  gap: 0.4rem;
+  font-weight: 600;
+}
+
+.form-grid input,
+.form-grid select,
+.registration-form button {
+  font: inherit;
+  padding: 0.65rem;
+}
+
+.registration-form button {
+  margin-top: 1rem;
+}
+
+.help-text,
+.notice {
+  margin-top: 1rem;
+}
+
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
