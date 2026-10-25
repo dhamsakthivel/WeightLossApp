@@ -1,4 +1,4 @@
-import { PatientRegistrationForm } from "@/components/patient-registration-form";
+import { PatientRegistrationWorkspace } from "@/components/patient-registration-workspace";
 
 export default function NewPatientPage() {
   return (
@@ -9,7 +9,7 @@ export default function NewPatientPage() {
         Create a longitudinal monitoring record. Patient registration is
         audited and requires authorized care-team access.
       </p>
-      <PatientRegistrationForm isAuthenticated={false} careTeams={[]} />
+      <PatientRegistrationWorkspace />
     </main>
   );
 }

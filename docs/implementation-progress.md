@@ -92,6 +92,11 @@ specifications.
   - typed protected API request/response contract;
   - submission remains disabled until real OIDC session integration supplies a
     token and authorized care teams.
+- Added React OIDC integration:
+  - Authorization Code + PKCE client using `oidc-client-ts`;
+  - sign-in/sign-out and callback route;
+  - access token forwarded only to the protected API client;
+  - `.env.example` documents the required synthetic local configuration.
 - Verified:
   - `apps/api`: `./gradlew test`
   - `apps/web`: `npm run lint`
@@ -108,6 +113,7 @@ and reproducible.
 
 ## Next
 
-1. Add the React OIDC client and wire the registration form to the protected
-   API.
-2. Add patient list and profile correction workflow with role checks.
+1. Run Keycloak and PostgreSQL locally/cloud with synthetic seed data, then
+   verify real registration end-to-end.
+2. Load authorized care teams into the registration form.
+3. Add patient list and profile correction workflow with role checks.
