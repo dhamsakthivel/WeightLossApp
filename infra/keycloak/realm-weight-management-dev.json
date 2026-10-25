@@ -1,0 +1,45 @@
+{
+  "realm": "weight-management-dev",
+  "enabled": true,
+  "displayName": "Weight Management Development",
+  "roles": {
+    "realm": [
+      { "name": "physician" },
+      { "name": "medical_assistant" },
+      { "name": "administrator" },
+      { "name": "privacy_reviewer" }
+    ]
+  },
+  "clients": [
+    {
+      "clientId": "weight-management-web",
+      "enabled": true,
+      "publicClient": true,
+      "standardFlowEnabled": true,
+      "directAccessGrantsEnabled": false,
+      "redirectUris": ["http://localhost:3000/*"],
+      "webOrigins": ["http://localhost:3000"],
+      "attributes": {
+        "pkce.code.challenge.method": "S256"
+      }
+    }
+  ],
+  "users": [
+    {
+      "id": "10000000-0000-0000-0000-000000000001",
+      "username": "synthetic-ma",
+      "enabled": true,
+      "emailVerified": true,
+      "firstName": "Synthetic",
+      "lastName": "Medical Assistant",
+      "credentials": [
+        {
+          "type": "password",
+          "value": "__KEYCLOAK_DEMO_MA_PASSWORD__",
+          "temporary": false
+        }
+      ],
+      "realmRoles": ["medical_assistant"]
+    }
+  ]
+}

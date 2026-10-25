@@ -1,0 +1,16 @@
+.DS_Store
+.idea/
+.vscode/
+
+# Java / Gradle
+apps/api/.gradle/
+apps/api/build/
+
+# Node / Next.js
+apps/web/node_modules/
+apps/web/.next/
+
+# Local configuration and secrets
+.env
+.env.*
+!.env.example
