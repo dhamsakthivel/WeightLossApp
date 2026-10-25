@@ -8,9 +8,13 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.webmvc.test.autoconfigure.WebMvcTest;
+import org.springframework.context.annotation.Import;
 import org.springframework.test.web.servlet.MockMvc;
 
+import com.weightloss.api.foundation.security.ApiSecurityConfiguration;
+
 @WebMvcTest(SystemStatusController.class)
+@Import(ApiSecurityConfiguration.class)
 class SystemStatusControllerTest {
 
     @Autowired
@@ -24,5 +28,11 @@ class SystemStatusControllerTest {
                 .andExpect(jsonPath("$.service").value("weight-management-api"))
                 .andExpect(jsonPath("$.status").value("available"))
                 .andExpect(jsonPath("$.timestamp").isNotEmpty());
+    }
+
+    @Test
+    void deniesRoutesThatHaveNotBeenExplicitlyAuthorized() throws Exception {
+        mockMvc.perform(get("/api/v1/patients"))
+                .andExpect(status().isForbidden());
     }
 }

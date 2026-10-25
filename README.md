@@ -21,9 +21,17 @@ GET /api/v1/system/status
 ```
 
 It deliberately does not expose patient data or implement temporary mock
-authentication. The next increment introduces the organization/tenant model,
-OIDC integration, server-side authorization policy, and append-only audit
-events together.
+authentication. It now includes a PostgreSQL/Flyway tenant and audit schema,
+plus a default-deny Spring Security policy. OIDC integration will replace the
+temporary deny-all policy before any protected endpoint is introduced.
+
+## Learning checkpoint: why the tenant schema comes early
+
+Every future PHI table will include an organization identifier. The API will
+use that identifier with role, care-team, grant, and break-glass policy checks
+to prevent one practice from accessing another practice's data. Flyway tracks
+database changes as reviewed, ordered migrations rather than allowing the ORM
+to change production schema automatically.
 
 ## Local verification
 
