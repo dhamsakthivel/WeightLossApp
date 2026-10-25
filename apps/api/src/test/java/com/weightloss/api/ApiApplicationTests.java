@@ -28,12 +28,14 @@ class ApiApplicationTests {
 					'audit_events',
 					'care_teams',
 					'care_team_memberships',
-					'clinical_access_grants'
+					'clinical_access_grants',
+					'patients',
+					'patient_care_team_assignments'
 				)
 				""",
 				Integer.class);
 
-		org.assertj.core.api.Assertions.assertThat(tableCount).isEqualTo(7);
+		org.assertj.core.api.Assertions.assertThat(tableCount).isEqualTo(9);
 	}
 
 }

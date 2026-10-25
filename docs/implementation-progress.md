@@ -54,6 +54,15 @@ specifications.
     issuer claims before protected API access.
 - Added deployment configuration guidance. The identity provider remains a
   practice/vendor decision and is not hard-coded.
+- Added Flyway migration `V4` and initial patient domain:
+  - tenant-scoped opaque internal ID, legal identity, enrollment, status, and
+    responsible clinician fields;
+  - time-bounded patient-to-care-team assignments.
+- Added composed patient authorization. A user needs both an active
+  patient-to-care-team assignment and access to at least one assigned care
+  team through membership or an approved grant.
+- No patient endpoint exists yet; patient data remains unexposed until audit
+  writes and protected API handling are added.
 - Verified:
   - `apps/api`: `./gradlew test`
   - `apps/web`: `npm run lint`
@@ -70,6 +79,6 @@ and reproducible.
 
 ## Next
 
-1. Add patient records and patient-to-care-team assignment.
-2. Compose patient authorization from organization, identity, role,
-   care-team, grant, and patient assignment.
+1. Add append-only audit-event write service and protected patient API
+   handling.
+2. Add patient record creation and correction workflows with role checks.
