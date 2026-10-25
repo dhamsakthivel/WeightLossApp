@@ -21,11 +21,19 @@ class ApiApplicationTests {
 				"""
 				select count(*)
 				from information_schema.tables
-				where table_name in ('organizations', 'user_accounts', 'organization_memberships', 'audit_events')
+				where table_name in (
+					'organizations',
+					'user_accounts',
+					'organization_memberships',
+					'audit_events',
+					'care_teams',
+					'care_team_memberships',
+					'clinical_access_grants'
+				)
 				""",
 				Integer.class);
 
-		org.assertj.core.api.Assertions.assertThat(tableCount).isEqualTo(4);
+		org.assertj.core.api.Assertions.assertThat(tableCount).isEqualTo(7);
 	}
 
 }

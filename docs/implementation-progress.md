@@ -42,6 +42,12 @@ specifications.
 - Added the OIDC resource-server dependency and a server-side identity
   resolver. It maps only verified `issuer + subject` claims to an existing,
   active local account and denies unknown identities.
+- Added Flyway migration `V3` and care-team access model:
+  - care teams and time-bounded active staff memberships;
+  - physician-approved, time-bounded care-team clinical-access grants;
+  - a centralized policy that allows access only through current membership or
+    a current grant.
+- Added policy tests for direct membership, approved grant, and denial.
 - Verified:
   - `apps/api`: `./gradlew test`
   - `apps/web`: `npm run lint`
@@ -58,7 +64,8 @@ and reproducible.
 
 ## Next
 
-1. Add care-team assignments and physician-approved clinical access grants.
-2. Add centralized authorization policy tests before exposing protected APIs.
-3. Replace the temporary default-deny policy with configured OIDC JWT
+1. Replace the temporary default-deny policy with configured OIDC JWT
    authentication.
+2. Add patient records and patient-to-care-team assignment.
+3. Compose patient authorization from organization, identity, role,
+   care-team, grant, and patient assignment.
