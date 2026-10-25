@@ -95,6 +95,10 @@ public class Patient {
         return internalId;
     }
 
+    public UUID getOrganizationId() {
+        return organizationId;
+    }
+
     public PatientRecordStatus getRecordStatus() {
         return recordStatus;
     }

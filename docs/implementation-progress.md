@@ -61,8 +61,6 @@ specifications.
 - Added composed patient authorization. A user needs both an active
   patient-to-care-team assignment and access to at least one assigned care
   team through membership or an approved grant.
-- No patient endpoint exists yet; patient data remains unexposed until audit
-  writes and protected API handling are added.
 - Added append-only audit-event write service and a tested, organization-scoped
   audit command. The service records actor, resource, outcome, correlation ID,
   and JSON detail reference for future PHI workflow events.
@@ -72,6 +70,12 @@ specifications.
     team;
   - atomic patient/care-team assignment creation plus audit-event write;
   - unit tests for successful registration and rejected incomplete activation.
+- Added protected registration API contract:
+  - `POST /api/v1/organizations/{organizationId}/patients`;
+  - verified OIDC identity must map to an active local account;
+  - only active physician or MA organization membership is eligible;
+  - actor must have access to the selected care team;
+  - endpoint stays unreachable until the approved OIDC issuer is configured.
 - Verified:
   - `apps/api`: `./gradlew test`
   - `apps/web`: `npm run lint`
@@ -88,7 +92,5 @@ and reproducible.
 
 ## Next
 
-1. Add protected patient API handling using OIDC identity resolution, patient
-   policy, organization role checks, and audit events.
-2. Add the React registration form and patient list against that API.
-3. Add patient profile correction workflow with role checks.
+1. Add the React registration form and patient list against the protected API.
+2. Add patient profile correction workflow with role checks.
