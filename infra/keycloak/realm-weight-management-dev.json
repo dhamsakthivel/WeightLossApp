@@ -1,0 +1,27 @@
+{
+  "realm": "weight-management-dev",
+  "enabled": true,
+  "displayName": "Weight Management Development",
+  "roles": {
+    "realm": [
+      { "name": "physician" },
+      { "name": "medical_assistant" },
+      { "name": "administrator" },
+      { "name": "privacy_reviewer" }
+    ]
+  },
+  "clients": [
+    {
+      "clientId": "weight-management-web",
+      "enabled": true,
+      "publicClient": true,
+      "standardFlowEnabled": true,
+      "directAccessGrantsEnabled": false,
+      "redirectUris": ["http://localhost:3000/*"],
+      "webOrigins": ["http://localhost:3000"],
+      "attributes": {
+        "pkce.code.challenge.method": "S256"
+      }
+    }
+  ]
+}

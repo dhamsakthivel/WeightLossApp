@@ -76,6 +76,11 @@ specifications.
   - only active physician or MA organization membership is eligible;
   - actor must have access to the selected care team;
   - endpoint stays unreachable until the approved OIDC issuer is configured.
+- Added local Keycloak development configuration:
+  - realm import, synthetic-only browser client, authorization-code flow, and
+    PKCE;
+  - compose file and setup guide for a real local issuer;
+  - the cloud workspace lacks Docker, so this configuration is not run here.
 - Verified:
   - `apps/api`: `./gradlew test`
   - `apps/web`: `npm run lint`
@@ -92,5 +97,5 @@ and reproducible.
 
 ## Next
 
-1. Add the React registration form and patient list against the protected API.
-2. Add patient profile correction workflow with role checks.
+1. Add the React OIDC client and registration form against the protected API.
+2. Add patient list and profile correction workflow with role checks.
