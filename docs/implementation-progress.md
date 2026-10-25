@@ -63,6 +63,9 @@ specifications.
   team through membership or an approved grant.
 - No patient endpoint exists yet; patient data remains unexposed until audit
   writes and protected API handling are added.
+- Added append-only audit-event write service and a tested, organization-scoped
+  audit command. The service records actor, resource, outcome, correlation ID,
+  and JSON detail reference for future PHI workflow events.
 - Verified:
   - `apps/api`: `./gradlew test`
   - `apps/web`: `npm run lint`
@@ -79,6 +82,6 @@ and reproducible.
 
 ## Next
 
-1. Add append-only audit-event write service and protected patient API
-   handling.
+1. Add protected patient API handling using OIDC identity resolution, patient
+   policy, and audit events.
 2. Add patient record creation and correction workflows with role checks.
