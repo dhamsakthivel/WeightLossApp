@@ -48,6 +48,12 @@ specifications.
   - a centralized policy that allows access only through current membership or
     a current grant.
 - Added policy tests for direct membership, approved grant, and denial.
+- Added a safe OIDC security-mode switch:
+  - without an issuer, the API remains default-deny;
+  - with `APP_SECURITY_OIDC_ISSUER_URI`, Spring validates JWT signatures and
+    issuer claims before protected API access.
+- Added deployment configuration guidance. The identity provider remains a
+  practice/vendor decision and is not hard-coded.
 - Verified:
   - `apps/api`: `./gradlew test`
   - `apps/web`: `npm run lint`
@@ -64,8 +70,6 @@ and reproducible.
 
 ## Next
 
-1. Replace the temporary default-deny policy with configured OIDC JWT
-   authentication.
-2. Add patient records and patient-to-care-team assignment.
-3. Compose patient authorization from organization, identity, role,
+1. Add patient records and patient-to-care-team assignment.
+2. Compose patient authorization from organization, identity, role,
    care-team, grant, and patient assignment.
