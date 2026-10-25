@@ -106,6 +106,12 @@ specifications.
   - real local Keycloak issuer validation;
   - local-only CORS for the Next.js development server;
   - this profile is not a substitute for PostgreSQL production validation.
+- Added deterministic synthetic-seed scaffolding for the local profile:
+  - fixed synthetic organization, MA identity, care team, organization
+    membership, and care-team membership IDs;
+  - Keycloak realm template includes the matching synthetic MA subject;
+  - runtime validation is pending a fresh Cloud Agent boot that receives the
+    newly added `KEYCLOAK_DEMO_MA_PASSWORD` secret.
 - Verified:
   - `apps/api`: `./gradlew test`
   - `apps/web`: `npm run lint`

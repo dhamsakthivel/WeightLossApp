@@ -23,5 +23,23 @@
         "pkce.code.challenge.method": "S256"
       }
     }
+  ],
+  "users": [
+    {
+      "id": "10000000-0000-0000-0000-000000000001",
+      "username": "synthetic-ma",
+      "enabled": true,
+      "emailVerified": true,
+      "firstName": "Synthetic",
+      "lastName": "Medical Assistant",
+      "credentials": [
+        {
+          "type": "password",
+          "value": "__KEYCLOAK_DEMO_MA_PASSWORD__",
+          "temporary": false
+        }
+      ],
+      "realmRoles": ["medical_assistant"]
+    }
   ]
 }

@@ -17,5 +17,19 @@ cp "${REALM_SOURCE}" "${REALM_TARGET}"
 
 export KC_BOOTSTRAP_ADMIN_USERNAME="${KEYCLOAK_ADMIN_USERNAME:-admin}"
 export KC_BOOTSTRAP_ADMIN_PASSWORD="${KEYCLOAK_ADMIN_PASSWORD}"
+export KEYCLOAK_DEMO_MA_PASSWORD
+
+python3 - "${REALM_SOURCE}" "${REALM_TARGET}" <<'PYTHON'
+import json
+import os
+import pathlib
+import sys
+
+source = pathlib.Path(sys.argv[1])
+target = pathlib.Path(sys.argv[2])
+realm = json.loads(source.read_text())
+realm["users"][0]["credentials"][0]["value"] = os.environ["KEYCLOAK_DEMO_MA_PASSWORD"]
+target.write_text(json.dumps(realm))
+PYTHON
 
 exec "${KEYCLOAK_HOME}/bin/kc.sh" start-dev --http-port=8081 --import-realm
