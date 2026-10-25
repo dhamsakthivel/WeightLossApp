@@ -6,6 +6,8 @@ import java.util.UUID;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
@@ -40,8 +42,9 @@ public class Patient {
     @Column(name = "enrollment_date", nullable = false)
     private LocalDate enrollmentDate;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "record_status", nullable = false, length = 32)
-    private String recordStatus;
+    private PatientRecordStatus recordStatus;
 
     @Column(name = "membership_status", length = 32)
     private String membershipStatus;
@@ -62,5 +65,37 @@ public class Patient {
     private Instant updatedAt;
 
     protected Patient() {
+    }
+
+    Patient(UUID id, UUID organizationId, String internalId, String legalGivenName, String legalFamilyName,
+            LocalDate dateOfBirth, LocalDate enrollmentDate, PatientRecordStatus recordStatus,
+            String membershipStatus, UUID responsibleClinicianUserId, String statusReason,
+            Instant statusEffectiveAt, Instant createdAt, Instant updatedAt) {
+        this.id = id;
+        this.organizationId = organizationId;
+        this.internalId = internalId;
+        this.legalGivenName = legalGivenName;
+        this.legalFamilyName = legalFamilyName;
+        this.dateOfBirth = dateOfBirth;
+        this.enrollmentDate = enrollmentDate;
+        this.recordStatus = recordStatus;
+        this.membershipStatus = membershipStatus;
+        this.responsibleClinicianUserId = responsibleClinicianUserId;
+        this.statusReason = statusReason;
+        this.statusEffectiveAt = statusEffectiveAt;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+    }
+
+    public UUID getId() {
+        return id;
+    }
+
+    public String getInternalId() {
+        return internalId;
+    }
+
+    public PatientRecordStatus getRecordStatus() {
+        return recordStatus;
     }
 }

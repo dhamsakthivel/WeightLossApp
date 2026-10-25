@@ -66,6 +66,12 @@ specifications.
 - Added append-only audit-event write service and a tested, organization-scoped
   audit command. The service records actor, resource, outcome, correlation ID,
   and JSON detail reference for future PHI workflow events.
+- Began the Patient Registration vertical slice:
+  - server-generated opaque patient internal ID;
+  - validation that active registration needs a responsible clinician and care
+    team;
+  - atomic patient/care-team assignment creation plus audit-event write;
+  - unit tests for successful registration and rejected incomplete activation.
 - Verified:
   - `apps/api`: `./gradlew test`
   - `apps/web`: `npm run lint`
@@ -83,5 +89,6 @@ and reproducible.
 ## Next
 
 1. Add protected patient API handling using OIDC identity resolution, patient
-   policy, and audit events.
-2. Add patient record creation and correction workflows with role checks.
+   policy, organization role checks, and audit events.
+2. Add the React registration form and patient list against that API.
+3. Add patient profile correction workflow with role checks.

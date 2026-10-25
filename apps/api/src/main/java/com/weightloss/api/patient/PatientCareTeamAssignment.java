@@ -38,4 +38,16 @@ public class PatientCareTeamAssignment {
 
     protected PatientCareTeamAssignment() {
     }
+
+    PatientCareTeamAssignment(UUID id, UUID patientId, UUID careTeamId, String status, Instant startsAt,
+            Instant endsAt, Instant createdAt, Instant updatedAt) {
+        this.id = id;
+        this.patientId = patientId;
+        this.careTeamId = careTeamId;
+        this.status = status;
+        this.startsAt = startsAt;
+        this.endsAt = endsAt;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+    }
 }
