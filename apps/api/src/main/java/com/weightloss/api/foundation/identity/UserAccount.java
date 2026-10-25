@@ -41,4 +41,31 @@ public class UserAccount {
 
     protected UserAccount() {
     }
+
+    public UserAccount(UUID id, String issuer, String subject, String displayName, String status, Instant createdAt,
+            Instant updatedAt) {
+        this.id = id;
+        this.issuer = issuer;
+        this.subject = subject;
+        this.displayName = displayName;
+        this.status = status;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+    }
+
+    public UUID getId() {
+        return id;
+    }
+
+    public String getIssuer() {
+        return issuer;
+    }
+
+    public String getSubject() {
+        return subject;
+    }
+
+    public String getStatus() {
+        return status;
+    }
 }

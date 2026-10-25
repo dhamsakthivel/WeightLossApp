@@ -39,6 +39,9 @@ specifications.
     privacy reviewer.
 - Added a migration test that verifies the tenant, identity, membership, and
   audit tables are available together.
+- Added the OIDC resource-server dependency and a server-side identity
+  resolver. It maps only verified `issuer + subject` claims to an existing,
+  active local account and denies unknown identities.
 - Verified:
   - `apps/api`: `./gradlew test`
   - `apps/web`: `npm run lint`
@@ -55,8 +58,7 @@ and reproducible.
 
 ## Next
 
-1. Connect authenticated OIDC claims to server-side user lookup.
+1. Add care-team assignments and physician-approved clinical access grants.
 2. Add centralized authorization policy tests before exposing protected APIs.
-3. Add care-team assignments and physician-approved clinical access grants.
-4. Replace the temporary default-deny policy with configured OIDC JWT
+3. Replace the temporary default-deny policy with configured OIDC JWT
    authentication.
