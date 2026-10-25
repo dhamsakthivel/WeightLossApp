@@ -81,6 +81,11 @@ specifications.
     PKCE;
   - compose file and setup guide for a real local issuer;
   - the cloud workspace lacks Docker, so this configuration is not run here.
+- **Cloud Keycloak reminder:** Docker is unavailable in this Cloud Agent.
+  A Docker-free Keycloak distribution/start configuration can be added to the
+  dashboard-managed environment after `KEYCLOAK_ADMIN_PASSWORD` is supplied as
+  a Cloud environment secret. Do not use the compose development password or
+  any PHI in that environment.
 - Verified:
   - `apps/api`: `./gradlew test`
   - `apps/web`: `npm run lint`
