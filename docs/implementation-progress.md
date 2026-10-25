@@ -101,6 +101,11 @@ specifications.
   - sign-in/sign-out and callback route;
   - access token forwarded only to the protected API client;
   - `.env.example` documents the required synthetic local configuration.
+- Added `local` API profile for synthetic end-to-end development:
+  - file-backed H2 database in PostgreSQL compatibility mode;
+  - real local Keycloak issuer validation;
+  - local-only CORS for the Next.js development server;
+  - this profile is not a substitute for PostgreSQL production validation.
 - Verified:
   - `apps/api`: `./gradlew test`
   - `apps/web`: `npm run lint`
@@ -117,7 +122,7 @@ and reproducible.
 
 ## Next
 
-1. Run Keycloak and PostgreSQL locally/cloud with synthetic seed data, then
+1. Seed synthetic Keycloak MA, organization, and care-team data, then
    verify real registration end-to-end.
 2. Load authorized care teams into the registration form.
 3. Add patient list and profile correction workflow with role checks.
