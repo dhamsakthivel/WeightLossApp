@@ -86,6 +86,10 @@ specifications.
   dashboard-managed environment after `KEYCLOAK_ADMIN_PASSWORD` is supplied as
   a Cloud environment secret. Do not use the compose development password or
   any PHI in that environment.
+- **Cloud Keycloak validation:** with the environment secret supplied, the
+  Docker-free Keycloak 26.8.1 distribution started successfully on port 8081
+  and imported the synthetic `weight-management-dev` realm. The runnable
+  installation and start scripts are under `scripts/`.
 - Added the React Patient Registration screen and typed API client:
   - accessible identity/enrollment form;
   - active-status validation cues for clinician and care-team assignment;
