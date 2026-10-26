@@ -15,6 +15,8 @@ export function createUserManager(): UserManager {
     post_logout_redirect_uri: process.env.NEXT_PUBLIC_OIDC_POST_LOGOUT_REDIRECT_URI,
     response_type: "code",
     scope: "openid profile email",
+    silent_redirect_uri: `${window.location.origin}/auth/silent`,
+    automaticSilentRenew: true,
     userStore: new WebStorageStateStore({ store: window.sessionStorage }),
   });
 }

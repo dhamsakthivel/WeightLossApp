@@ -27,7 +27,20 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     if (!manager) {
       return;
     }
+    const updateAccessToken = (user: { access_token: string }) =>
+      setAccessToken(user.access_token);
+    const clearAccessToken = () => setAccessToken(null);
+
+    manager.events.addUserLoaded(updateAccessToken);
+    manager.events.addUserUnloaded(clearAccessToken);
+    manager.events.addAccessTokenExpired(clearAccessToken);
     manager.getUser().then((user) => setAccessToken(user?.access_token ?? null));
+
+    return () => {
+      manager.events.removeUserLoaded(updateAccessToken);
+      manager.events.removeUserUnloaded(clearAccessToken);
+      manager.events.removeAccessTokenExpired(clearAccessToken);
+    };
   }, [manager]);
 
   const state: AuthState = {
